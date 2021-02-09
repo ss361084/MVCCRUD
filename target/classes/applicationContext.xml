@@ -20,7 +20,7 @@
 	        </list>
 	    </property>
 	</bean>
-   
+	
    <util:properties id="projectProperties" location="classpath:project.properties"/>
    <util:properties id="databaseProperties" location="classpath:database.properties"/>
    

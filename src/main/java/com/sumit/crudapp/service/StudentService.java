@@ -1,5 +1,7 @@
 package com.sumit.crudapp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,9 @@ public class StudentService {
 	
 	public void deleteStudent(Student student) {
 		studentDao.deleteStudent(student);
+	}
+	
+	public List<Student> getAllStudent(){
+		return studentDao.getAllStudent();
 	}
 }

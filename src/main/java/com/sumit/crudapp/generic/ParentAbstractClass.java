@@ -1,6 +1,11 @@
 package com.sumit.crudapp.generic;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -35,5 +40,22 @@ public abstract class ParentAbstractClass<T> {
 	
 	public void deleteEntity(T obj) {
 		getCurrentSession().delete(obj);
+	}
+	
+	public List<T> getAllEntity(){
+		CriteriaQuery<T> criteriaQuery = getCriteriaQuery();
+		Root<T> root = criteriaQuery.from(parentClass);
+		criteriaQuery.select(root);
+		return getCurrentSession().createQuery(criteriaQuery).getResultList();
+	}
+	
+	private CriteriaQuery<T> getCriteriaQuery(){
+		CriteriaBuilder criteriaBuilder = getCurrentSession().getCriteriaBuilder();
+		return criteriaBuilder.createQuery(parentClass);
+	}
+	
+	public T getEntity() {
+		
+		return null;
 	}
 }

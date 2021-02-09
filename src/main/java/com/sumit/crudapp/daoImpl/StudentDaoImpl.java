@@ -1,5 +1,7 @@
 package com.sumit.crudapp.daoImpl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,12 @@ public class StudentDaoImpl extends ParentAbstractClass<Student> implements Stud
 	@Override
 	public void deleteStudent(Student student) {
 		super.deleteEntity(student);
+	}
+
+	@Override
+	public List<Student> getAllStudent() {
+		List<Student> listStudent = super.getAllEntity();
+		return listStudent.isEmpty() ? null : listStudent;
 	}
 
 }
